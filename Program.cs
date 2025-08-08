@@ -49,7 +49,14 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 
 var app = builder.Build();
 
-app.UseMiddleware<GlobalExceptionMiddleware>();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AppDbContext>();
+    DbInitializar.Seed(context);
+}
+
+// app.UseMiddleware<GlobalExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -68,6 +75,6 @@ app.MapControllers();
 
 app.Run();
 
-internal class GlobalExceptionMiddleware
-{
-}
+// internal class GlobalExceptionMiddleware
+// {
+// }

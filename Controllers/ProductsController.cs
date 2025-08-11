@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductInventoryApi.Data;
 using ProductInventoryApi.Models;
+using ProductInventoryApi.Models.DTOs;
 
 namespace ProductInventoryApi.Controllers
 {
@@ -34,8 +35,17 @@ namespace ProductInventoryApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<Product>> PostProduct(ProductCreateDto dto)
         {
+            var product = new Product
+            {
+                Name = dto.Name,
+                Description = dto.Description ?? string.Empty,
+                Price = dto.Price,
+                StockQuantity = dto.StockQuantity,
+                CategoryId = dto.CategoryId
+            };
+
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
@@ -43,14 +53,20 @@ namespace ProductInventoryApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutProduct(int id, ProductCreateDto dto)
         {
-            if (id != product.Id)
-            {
-                return BadRequest();
-            }
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+                return NotFound();
 
             _context.Entry(product).State = EntityState.Modified;
+
+            product.Name = dto.Name;
+            product.Description = dto.Description!;
+            product.Price = dto.Price;
+            product.StockQuantity = dto.StockQuantity;
+            product.CategoryId = dto.CategoryId;
 
             try
             {

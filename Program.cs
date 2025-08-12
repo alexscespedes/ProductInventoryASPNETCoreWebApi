@@ -82,6 +82,8 @@ app.UseCors("LocalDevPolicy");
 
 app.UseAuthorization();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 app.MapControllers();
 
 app.Run();

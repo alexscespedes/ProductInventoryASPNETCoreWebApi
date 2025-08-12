@@ -89,15 +89,18 @@ public class ProductService : IProductService
         _context.Products.Add(product);
         await _context.SaveChangesAsync();
 
+        if (product.Price < 0)
+            throw new ArgumentException("Price cannot be negative");
+
         return new ProductDto
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Description = product.Description,
-            Price = product.Price,
-            StockQuantity = product.StockQuantity,
-            CategoryId = product.CategoryId
-        };
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                StockQuantity = product.StockQuantity,
+                CategoryId = product.CategoryId
+            };
     }
 
     public async Task<bool> UpdateAsync(int id, UpdateProductDto dto)

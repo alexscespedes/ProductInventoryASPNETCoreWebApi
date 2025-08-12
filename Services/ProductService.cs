@@ -18,9 +18,35 @@ public class ProductService : IProductService
         _context = context;
     }
 
-    public async Task<IEnumerable<ProductDto>> GetAllAsync()
+    public async Task<IEnumerable<ProductDto>> GetAllAsync(
+        string? search = null,
+        string? sortBy = null,
+        bool sortDesc = false,
+        int pageNumber = 1,
+        int pageSize = 10)
     {
-        return await _context.Products
+        var query = _context.Products.AsQueryable();
+
+        // Filtering
+        if (!string.IsNullOrEmpty(search))
+        {
+            query = query.Where(p =>
+                p.Name.Contains(search) ||
+                p.Category.Name.Contains(search));
+        }
+
+        // Sorting
+        query = sortBy?.ToLower() switch
+        {
+            "price" => sortDesc ? query.OrderByDescending(p => p.Price) : query.OrderBy(p => p.Price),
+            "name"  => sortDesc ? query.OrderByDescending(p => p.Name) : query.OrderBy(p => p.Name),
+            _       => query.OrderBy(p => p.Id)
+        };
+
+        // Paging
+        query = query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+
+        return await query
             .Select(p => new ProductDto
             {
                 Id = p.Id,

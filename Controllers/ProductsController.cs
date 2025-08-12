@@ -20,9 +20,15 @@ namespace ProductInventoryApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts(
+            string? search,
+            string? sortBy,
+            bool sortDesc = false,
+            int pageNumber = 1,
+            int pageSize = 10)
+
         {
-            var products = await _service.GetAllAsync();
+            var products = await _service.GetAllAsync(search, sortBy, sortDesc, pageNumber, pageSize);
             return Ok(products);
         }
 

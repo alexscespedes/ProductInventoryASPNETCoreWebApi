@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProductInventoryApi.Models.DTOs;
 
-public class ProductCreateDto
+public class CreateProductDto
 {
-    [Required]
+    [Required, StringLength(100)]
     public string Name { get; set; } = null!;
-    
+
+    [StringLength(500)]
     public string? Description { get; set; }
 
     [Range(0, double.MaxValue)]

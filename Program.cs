@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductInventoryApi.Data;
+using ProductInventoryApi.Middleware;
+using ProductInventoryApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +48,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
         return new BadRequestObjectResult(problemDetails);
     };
 });
+
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 

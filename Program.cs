@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductInventoryApi.Data;
@@ -15,6 +16,11 @@ builder.Services.AddControllers()
         {
             return new BadRequestObjectResult(context.ModelState);
         };
+    })
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.WriteIndented = true;
     });
 
 // Configure EF Core

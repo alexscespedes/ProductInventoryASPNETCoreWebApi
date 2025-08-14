@@ -47,6 +47,7 @@ public class ProductService : IProductService
         query = query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
 
         return await query
+            .Include(p => p.Category)
             .Select(p => new ProductDto
             {
                 Id = p.Id,
@@ -61,7 +62,10 @@ public class ProductService : IProductService
 
     public async Task<ProductDto?> GetByIdAsync(int id)
     {
-        var product = await _context.Products.FindAsync(id);
+        var product = await _context.Products
+            .Include(p => p.Category)
+            .FirstOrDefaultAsync(p => p.Id == id);
+            
         if (product == null) return null;
 
         return new ProductDto
@@ -71,7 +75,8 @@ public class ProductService : IProductService
             Description = product.Description,
             Price = product.Price,
             StockQuantity = product.StockQuantity,
-            CategoryId = product.CategoryId
+            CategoryId = product.CategoryId,
+            Category = product.Category
         };
     }
 
@@ -92,15 +97,20 @@ public class ProductService : IProductService
         if (product.Price < 0)
             throw new ArgumentException("Price cannot be negative");
 
+        product = await _context.Products
+            .Include(p => p.Category)
+            .FirstOrDefaultAsync(p => p.Id == product.Id);
+
         return new ProductDto
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Description = product.Description,
-                Price = product.Price,
-                StockQuantity = product.StockQuantity,
-                CategoryId = product.CategoryId
-            };
+        {
+            Id = product!.Id,
+            Name = product.Name,
+            Description = product.Description,
+            Price = product.Price,
+            StockQuantity = product.StockQuantity,
+            CategoryId = product.CategoryId,
+            Category = product.Category
+        };
     }
 
     public async Task<bool> UpdateAsync(int id, UpdateProductDto dto)

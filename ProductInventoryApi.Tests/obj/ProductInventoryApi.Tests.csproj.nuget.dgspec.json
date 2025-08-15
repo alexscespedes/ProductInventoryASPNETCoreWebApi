@@ -1,0 +1,177 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi.Tests/ProductInventoryApi.Tests.csproj": {}
+  },
+  "projects": {
+    "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi.Tests/ProductInventoryApi.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi.Tests/ProductInventoryApi.Tests.csproj",
+        "projectName": "ProductInventoryApi.Tests",
+        "projectPath": "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi.Tests/ProductInventoryApi.Tests.csproj",
+        "packagesPath": "/home/alexsc03/.nuget/packages/",
+        "outputPath": "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi.Tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/alexsc03/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi/ProductInventoryApi.csproj": {
+                "projectPath": "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi/ProductInventoryApi.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.72, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.118/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi/ProductInventoryApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi/ProductInventoryApi.csproj",
+        "projectName": "ProductInventoryApi",
+        "projectPath": "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi/ProductInventoryApi.csproj",
+        "packagesPath": "/home/alexsc03/.nuget/packages/",
+        "outputPath": "/home/alexsc03/Documents/Backend/ASPNETCoreProjects/ProductInventoryWebApi/ProductInventoryApi/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/alexsc03/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.118/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

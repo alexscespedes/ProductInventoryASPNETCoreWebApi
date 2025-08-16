@@ -94,6 +94,4 @@ app.MapControllers();
 
 app.Run();
 
-// internal class GlobalExceptionMiddleware
-// {
-// }
+public partial class Program {}
